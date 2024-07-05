@@ -1,0 +1,559 @@
+$primario: #F8B30B;
+$secundario: #0B9F96;
+$terciario: #F6C8A4;
+$quartiario: #C5480D;
+$oscuro1: #AA9D87;
+$oscuro2: #524C42;
+
+
+/*$primario: #FFCD75;
+$secundario: #C775FF;
+$terciario: #75FFB0;
+$oscuro1: #AA9D87;
+$oscuro2: #524C42;*/
+$cafe: #743f1f;
+$purpura: #674070;
+$verde: #407060;
+
+/*
+--gunmetal: #292f36ff;
+--robin-egg-blue: #4ecdc4ff;
+--mint-cream: #f7fff7ff;
+--light-red: #ff6b6bff;
+--naples-yellow: #ffe66dff;
+*/
+
+@view-transition{
+    navigation: auto;
+}
+::view-transition-old(root),
+::view-transition-new(root){
+    animation-duration: 0.5s;
+}
+/*::view-transition-old(root){
+    animation: salida 0.5s;
+}
+::view-transition-new(root){
+    animation: entrada 0.5s;
+}*/
+
+@keyframes entrada {
+    from{
+        transform: scale(0);
+    }
+    to{
+        transform: scale(1);
+    }
+}
+
+@keyframes salida {
+    from{
+        transform: scale(1);
+    }
+    to{
+        transform: scale(0);
+    }
+}
+
+
+@mixin fuente{
+    font-family: "Oswald", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+}
+
+@mixin medias ($medida : 768px) {
+    @media screen and (min-width: $medida){
+        @content;
+    }   
+}
+
+
+
+@mixin boton-base{
+    border-radius: 10px;
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 1rem 2rem;
+    text-decoration: none;
+    transition: .4s;
+    outline: none;
+    border-color: transparent;
+    &:hover{
+        text-decoration: none;
+        opacity: 0.8;
+    }
+}
+
+header{
+    background-color: $primario;
+    padding-bottom: 0px;
+    
+    .cover-relative{
+        position: relative;
+        .onda{
+            position: absolute;
+            width: 100%;
+            left: 0px;
+            z-index: 1;
+            background-color: transparent;
+            @include medias(1024px){
+                margin-top: -15px;
+            }
+        }
+    }
+    .nav-link{
+        @include fuente;
+        font-weight: 400;
+        color: $cafe !important;
+        &.active{
+            font-weight: 600;
+            color: #fff !important
+        }
+    }
+
+    .boton-registro{
+        @include fuente;
+        @include boton-base;
+        background-color: $secundario;
+        color: #fff;
+        font-weight: 700;
+        font-size: 1.5rem;
+        letter-spacing: 1px;
+    }
+    .boton-ingreso{
+        @include fuente;
+        @include boton-base;
+        background-color: $purpura;
+        color: #fff;
+        font-weight: 700;
+        font-size: 1.5rem;
+        letter-spacing: 1px;
+    }
+}
+.btn-primary{
+    @include boton-base;
+    background-color: $secundario;
+    &:hover{
+        background-color: $secundario;
+        border-color: transparent;
+    }
+}
+
+.h-100{
+    height: 100vh;
+}
+.textura{
+    background-image: url('../img/trama.png');
+    background-repeat: repeat;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+.section-destacado{
+    background-image: url('../img/trama.png');
+    background-repeat: repeat;
+    background-position: center;
+    background-attachment: fixed;
+    .card-destacado{
+        @include medias(768px){
+            margin-top: -6rem;
+        }
+        padding: 1rem;
+        border-radius: 25px;
+        text-align: center;
+        -webkit-box-shadow: -5px 14px 5px -12px rgba(0,0,0,0.25);
+        -moz-box-shadow: -5px 14px 5px -12px rgba(0,0,0,0.25);
+        box-shadow: -5px 14px 5px -12px rgba(0,0,0,0.25);       
+
+        .fw-normal{
+            @include fuente;
+            margin-top: 1rem;  
+            color: #fff;
+        }
+
+        p{
+            color: #fff;
+        }
+
+        &.amarillo{
+            background-color: $primario;
+        }
+
+        &.morado{
+            background-color: $secundario;
+        }
+
+        &.verde{
+            background-color: $terciario;
+        }
+    }
+}
+
+.section-somos{
+    background-color: $secundario;
+    h1,p{
+        @include fuente;
+        color: #fff;
+    }
+    h1{
+        font-size: 4rem;
+    }
+    p{
+        font-size: 1.3rem;
+
+        strong{
+            color: $primario;
+            font-size: 1.5rem;
+        }
+    }
+}
+.section-registrate{
+    background-color: $primario;
+
+    h1{
+        color: $secundario;
+        @include fuente;
+    }
+    .boton-registro{
+        @include boton-base;
+        @include fuente;
+        background-color:$secundario;
+        color: #fff;
+        margin: 2rem auto;
+        display: block;
+        max-width: 400px;
+        font-size: 2rem;
+    }
+}
+
+.huincha-corte{
+    background-color:$secundario;
+    h1{
+        @include fuente;
+        color: #fff;
+        text-align: center;
+    }
+}
+
+
+footer{
+    .fa-brands{
+        color: $secundario;
+        font-size: 2rem;
+        transition: .4s;
+        @include medias(768px){
+            font-size: 3rem;
+        }
+
+        &:hover{
+            opacity: 0.6;
+        }
+    }
+
+    .sigue{
+        @include fuente;
+        text-align: center;
+        color: $secundario;
+        font-size: 1.4rem;
+    }
+}
+
+// formulario login
+
+.form-signin,
+.form-floating,
+.form-control,
+input,
+label{
+    @include fuente;
+    color: $oscuro2;
+}
+
+.form-signin{
+    position: relative;
+    z-index: 1;
+}
+
+.notengo-cuenta{
+    color: $secundario;
+    font-size: 0.8rem;
+    @include medias(400px){
+        font-size: 1rem;
+    }
+    @include medias(600px){
+        font-size: 0.8rem;
+    }
+    @include medias(1024px){
+        font-size:1.2rem;
+    }
+    a{
+        color: #fff;
+        background-color: $primario;
+        padding: 3px;
+        margin-left: 10px;
+        text-decoration: none;
+        transition:  .4s;
+
+        &:hover{
+            background-color: $quartiario;
+        }
+    }
+}
+
+// user profile
+.side-bar_user{
+    background-color: #fff;
+    padding: 1rem;
+    border-radius: 25px;
+    -webkit-box-shadow: -5px 14px 5px -12px rgba(0,0,0,0.25);
+    -moz-box-shadow: -5px 14px 5px -12px rgba(0,0,0,0.25);
+    box-shadow: -5px 14px 5px -12px rgba(0,0,0,0.25);   
+    @include fuente;
+
+    h5{
+        font-size: 1.3rem;
+        margin-top: 1rem;
+        color: $secundario;
+    }
+
+    h6{
+        color:$primario;
+    }
+
+    .user-image_profile{
+        border-radius: 50%;
+        width: 100%;
+        max-width: 300px;
+        margin: auto;
+        display: block;
+    }
+
+    .datos_user{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: repeat(3, 1fr);
+        grid-column-gap: 0px;
+        grid-row-gap: 0px;
+        padding: 1rem;
+        align-items: center;
+    }
+
+    .fa-solid,
+    p{
+        color: $oscuro2;
+        font-size: 1.3rem;
+    }
+
+    .fa-brands {
+        color: $secundario;
+        font-size: 2rem;
+        margin-right: 1rem;
+        transition: .4s;
+        &:hover{
+            color: $primario;
+        }
+    }
+    ul{
+        list-style: none;
+        li{
+            padding: 0.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            p{
+                margin-bottom: 0px;
+            }
+        }
+    }
+}
+
+//  mascota
+.side-mascota{
+    -webkit-box-shadow: -5px 14px 5px -12px rgba(0,0,0,0.25);
+    -moz-box-shadow: -5px 14px 5px -12px rgba(0,0,0,0.25);
+    box-shadow: -5px 14px 5px -12px rgba(0,0,0,0.25);   
+    @include fuente;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    background-color: #FFF;
+    -webkit-border-top-left-radius: 80px;
+    -moz-border-radius-topleft: 80px;
+    border-top-left-radius: 80px;
+    @include medias(768px){
+        -webkit-border-top-left-radius: 80px;
+        -moz-border-radius-topleft: 80px;
+        border-top-left-radius: 80px;
+    }
+
+    .cover-foto_mascota{
+        background-color: #fff;
+        -webkit-border-top-left-radius: 80px;
+        -moz-border-radius-topleft: 80px;
+        border-top-left-radius: 80px;
+    }
+    .info-mascota{
+        background-color: #fff;
+        text-align: center;
+    }
+
+    .foto-mascota{
+        -webkit-border-top-left-radius: 80px;
+        -webkit-border-bottom-right-radius: 80px;
+        -moz-border-radius-topleft: 80px;
+        -moz-border-radius-bottomright: 80px;
+        border-top-left-radius: 80px;
+        border-bottom-right-radius: 80px;
+    }
+
+    h2{
+        color: $quartiario;
+        font-size: 3rem;
+        @include medias(600px){
+            font-size: 2.5rem;
+        }
+    }
+    .data_mascota{
+        color: $oscuro1
+    }
+    .boton_ficha{
+        @include boton-base;
+        @include fuente;
+        background-color: $quartiario;
+        color: $terciario;
+    }
+}
+
+.title{
+    @include fuente;
+    color: $oscuro2;
+}
+
+.boton-volver{
+    @include boton-base;
+    @include fuente;
+    background-color: $quartiario;
+    color: $terciario;
+}
+
+.box-info_mascota{
+    background-color: $terciario;
+    padding: 1.5rem;
+    border-radius: 25px;
+    @include fuente;
+
+    h1{
+        color: $cafe;
+    }
+
+    h5{
+        color: $quartiario;
+    }
+
+    p{
+        color: $oscuro2;
+        margin-bottom: 0px;
+    }
+
+    .ficha_vista{
+        color: $verde;
+        text-decoration: none;
+        transition: .4s;
+        &:hover{
+            opacity: 0.5;
+        }
+    }
+}
+
+.lightbox {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    z-index: 9999;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.5s;
+}
+
+.lightbox.show {
+    display: flex;
+    opacity: 1;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.lightbox img {
+    max-width: 90%;
+    max-height: 90%;
+    margin: 1%;
+}
+
+.relative-gallery{
+    position: relative;
+    
+    .close-btn{
+        z-index: 888;
+        font-size: 3rem;
+        color: $quartiario;
+        position: absolute;
+        left: 50%;
+        top: 0px;
+        margin-left: -1.5rem;
+        margin-top: -3rem;
+        cursor: pointer;
+        &:hover{
+            opacity: 0.5;
+        }
+        @include medias(768px){
+            float: right;
+            left:inherit;
+            right: 0px;
+            margin-top: -2rem;
+        }
+    }
+}
+
+.box-usuario{
+    background-color: #FFF;
+    border-radius: 15px;
+    padding: 1.5rem;
+    @include medias(980px){
+        h5{
+            font-size: 1rem;
+        }
+    }
+    @include medias(1200px){
+        h5{
+            font-size: 1.1rem;
+        }
+    }
+
+    .boton-contacto{
+        @include fuente;
+        @include boton-base;
+        background-color: $purpura;
+        color: #fff;
+        font-weight: 700;
+        font-size: 1.5rem;
+        letter-spacing: 1px;
+    }
+
+    .link-contacto{
+        margin: 0px 10px;
+        i{
+            font-size: 2rem;
+            color: $secundario;
+            transition: .4s;
+            &:hover{
+                opacity: 0.5;
+            }
+        }
+    }
+}
